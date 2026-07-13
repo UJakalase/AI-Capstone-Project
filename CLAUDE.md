@@ -4,7 +4,7 @@
    Capstone front-end site built during my internship.
 
    ## Stack
-   - HTML5, CSS3, vanilla JavaScript
+   - HTML, CSS, vanilla JavaScript
    - Live Server for local development
    - Prettier for formatting, ESLint for linting
 
