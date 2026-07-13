@@ -31,6 +31,24 @@ The platform is designed to be simple, responsive, and easy to navigate, allowin
 
 ---
 
+## Getting Started
+
+### Live Demo
+ Live site wil be posted after project completion
+
+### Run Locally
+
+Since this project is built with plain HTML, CSS, and JavaScript, no installation or build step is required.
+
+```bash
+git clone https://github.com/UJakalase/AI-Capstone-Project.git
+cd lwazi-agricare
+```
+
+Then simply open `index.html` in your browser.
+Alternatively, for a smoother local experience with live reload, you can use the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VS Code.
+
+---
 # Technology Stack
 
 ## Frontend
@@ -44,7 +62,7 @@ The platform is designed to be simple, responsive, and easy to navigate, allowin
 
 ## APIs
 
-- Language API
+- Language Translation API
 
 ## Development Tools
 
@@ -166,7 +184,7 @@ Guidance on:
 
 # Responsive Design
 
-The website has will be optimized for:
+The website will be optimized for:
 
 - Mobile devices
 - Tablets
