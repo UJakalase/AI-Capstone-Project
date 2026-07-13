@@ -1,7 +1,7 @@
 # CLAUDE.md
 
    ## Project
-   Capstone front-end site built during my internship.
+   Capstone front-end site(Lwazi AgriCare) built during my internship.
 
    ## Stack
    - HTML, CSS, vanilla JavaScript
