@@ -3,573 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ferro &amp; Ash — Small-Batch Forged Knives</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --ash: #1b1815;
-        --ash-2: #14110f;
-        --surface: #262220;
-        --surface-2: #2e2925;
-        --bone: #ede7dd;
-        --bone-dim: #c9c2b5;
-        --steel: #9c948a;
-        --hairline: #3a342e;
-        --brass: #a9814f;
-        --brass-soft: rgba(169, 129, 79, 0.35);
-        --ember: #c1440e;
-        --ember-soft: rgba(193, 68, 14, 0.45);
-
-        --display: "Big Shoulders Display", sans-serif;
-        --body: "Archivo", sans-serif;
-        --mono: "IBM Plex Mono", monospace;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        background: var(--ash);
-        color: var(--bone);
-        font-family: var(--body);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      ::selection {
-        background: var(--brass-soft);
-        color: var(--bone);
-      }
-
-      :focus-visible {
-        outline: 2px solid var(--brass);
-        outline-offset: 3px;
-      }
-
-      /* ---------- shared layout ---------- */
-      .wrap {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
-      .eyebrow {
-        font-family: var(--mono);
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--brass);
-      }
-
-      /* ---------- nav ---------- */
-      header {
-        position: relative;
-        z-index: 3;
-        padding: 28px 0 0;
-      }
-
-      nav.wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .mark {
-        font-family: var(--display);
-        font-weight: 900;
-        font-size: 22px;
-        letter-spacing: 0.01em;
-        text-transform: uppercase;
-        display: flex;
-        align-items: baseline;
-        gap: 6px;
-      }
-      .mark span {
-        color: var(--brass);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 32px;
-        font-size: 14px;
-        color: var(--bone-dim);
-      }
-      .nav-links a {
-        text-decoration: none;
-        position: relative;
-        padding-bottom: 4px;
-      }
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 100%;
-        bottom: 0;
-        height: 1px;
-        background: var(--brass);
-        transition: right 0.25s ease;
-      }
-      .nav-links a:hover::after,
-      .nav-links a:focus-visible::after {
-        right: 0;
-      }
-
-      @media (max-width: 720px) {
-        .nav-links {
-          display: none;
-        }
-      }
-
-      /* ---------- hero ---------- */
-      .hero {
-        position: relative;
-        overflow: hidden;
-        padding: 90px 0 110px;
-      }
-
-      .hero-glow {
-        position: absolute;
-        inset: -20% -10% auto -10%;
-        height: 620px;
-        background:
-          radial-gradient(
-            560px 320px at 22% 30%,
-            var(--ember-soft),
-            transparent 70%
-          ),
-          radial-gradient(
-            420px 260px at 78% 15%,
-            var(--brass-soft),
-            transparent 70%
-          );
-        filter: blur(10px);
-        opacity: 0.55;
-        pointer-events: none;
-      }
-
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-        max-width: 760px;
-      }
-
-      h1.headline {
-        font-family: var(--display);
-        font-weight: 900;
-        text-transform: uppercase;
-        line-height: 0.94;
-        letter-spacing: 0.005em;
-        font-size: clamp(48px, 8vw, 92px);
-        margin: 18px 0 22px;
-      }
-      h1.headline em {
-        font-style: normal;
-        color: var(--brass);
-      }
-
-      .hero-sub {
-        font-size: 18px;
-        line-height: 1.6;
-        color: var(--bone-dim);
-        max-width: 520px;
-        margin: 0 0 34px;
-      }
-
-      .btn-row {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-family: var(--mono);
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 14px 22px;
-        border-radius: 2px;
-        border: 1px solid var(--hairline);
-        transition:
-          border-color 0.2s ease,
-          background 0.2s ease,
-          color 0.2s ease;
-      }
-      .btn-primary {
-        background: var(--brass);
-        color: var(--ash-2);
-        border-color: var(--brass);
-        font-weight: 500;
-      }
-      .btn-primary:hover {
-        background: var(--ember);
-        border-color: var(--ember);
-        color: var(--bone);
-      }
-      .btn-ghost {
-        color: var(--bone-dim);
-      }
-      .btn-ghost:hover {
-        border-color: var(--brass);
-        color: var(--brass);
-      }
-
-      /* ---------- batch section (FOCAL) ---------- */
-      .batch {
-        position: relative;
-        padding: 40px 0 120px;
-        border-top: 1px solid var(--hairline);
-      }
-
-      .batch-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin: 46px 0 46px;
-      }
-
-      h2.batch-title {
-        font-family: var(--display);
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: clamp(30px, 4vw, 44px);
-        margin: 10px 0 0;
-        line-height: 1;
-      }
-
-      .batch-meta {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--steel);
-        text-align: right;
-      }
-      .batch-meta strong {
-        color: var(--bone-dim);
-        font-weight: 500;
-      }
-
-      /* the flexbox showcase */
-      .flex-row {
-        display: flex;
-        gap: 28px;
-        align-items: stretch;
-      }
-
-      .blade-card {
-        position: relative;
-        flex: 1 1 0;
-        background: linear-gradient(
-          180deg,
-          var(--surface-2) 0%,
-          var(--surface) 100%
-        );
-        border: 1px solid var(--hairline);
-        border-top: 3px solid var(--brass);
-        border-radius: 3px;
-        padding: 30px 26px 26px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        isolation: isolate;
-        overflow: hidden;
-        transition:
-          transform 0.35s ease,
-          border-color 0.35s ease,
-          box-shadow 0.35s ease;
-      }
-
-      /* hammered grain texture */
-      .blade-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
-        opacity: 0.5;
-        mix-blend-mode: overlay;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .blade-card > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      .blade-card:hover,
-      .blade-card:focus-within {
-        transform: translateY(-6px);
-        border-top-color: var(--ember);
-        box-shadow: 0 22px 40px -18px rgba(193, 68, 14, 0.35);
-      }
-
-      .blade-glyph {
-        width: 46px;
-        height: 14px;
-        align-self: flex-start;
-      }
-      .blade-glyph svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-      .blade-glyph path {
-        stroke: var(--brass);
-        stroke-width: 1.4;
-        fill: none;
-        transition: stroke 0.35s ease;
-      }
-      .blade-card:hover .blade-glyph path {
-        stroke: var(--ember);
-      }
-
-      .blade-name {
-        font-family: var(--display);
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: 26px;
-        letter-spacing: 0.01em;
-        margin: 0;
-      }
-
-      .blade-desc {
-        font-size: 15px;
-        line-height: 1.55;
-        color: var(--bone-dim);
-        margin: 0;
-        flex-grow: 1;
-      }
-
-      .blade-specs {
-        border-top: 1px solid var(--hairline);
-        padding-top: 14px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--steel);
-      }
-      .blade-specs .row {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-      }
-      .blade-specs .row span:last-child {
-        color: var(--bone-dim);
-        text-align: right;
-      }
-
-      @media (max-width: 880px) {
-        .flex-row {
-          flex-direction: column;
-        }
-      }
-
-      /* ---------- process ---------- */
-      .process {
-        border-top: 1px solid var(--hairline);
-        padding: 70px 0;
-      }
-      .process-inner {
-        display: grid;
-        grid-template-columns: 1fr 1.4fr;
-        gap: 48px;
-      }
-      .process h3 {
-        font-family: var(--display);
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: clamp(24px, 3vw, 32px);
-        margin: 10px 0 0;
-        line-height: 1.05;
-      }
-      .process p {
-        color: var(--bone-dim);
-        line-height: 1.7;
-        font-size: 15px;
-        margin: 0 0 14px;
-      }
-      @media (max-width: 780px) {
-        .process-inner {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ---------- footer ---------- */
-      footer {
-        border-top: 1px solid var(--hairline);
-        padding: 40px 0 50px;
-      }
-      .footer-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 16px;
-        font-size: 13px;
-        color: var(--steel);
-      }
-      .footer-row .mark {
-        font-size: 15px;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          scroll-behavior: auto !important;
-        }
-      }
-    </style>
+    <title>AgriGuide — Practical animal care, in your language</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <nav class="wrap">
-        <div class="mark">Ferro<span>&amp;</span>Ash</div>
-        <div class="nav-links">
-          <a href="#batch">The Batch</a>
-          <a href="#process">The Forge</a>
-          <a href="#inquire">Inquire</a>
-        </div>
-      </nav>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <span class="site-header__logo">AgriGuide</span>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#main-content">Home</a></li>
+            <li><a href="#core-features">Guides</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-glow"></div>
-      <div class="wrap hero-inner">
-        <p class="eyebrow">Small-batch chef's knives</p>
-        <h1 class="headline">
-          Three blades.<br />One batch.<br /><em>No repeats.</em>
-        </h1>
-        <p class="hero-sub">
-          Ferro &amp; Ash forges a new trio of chef's knives each season —
-          hand-hammered, water-quenched, and never reissued once a batch sells
-          out.
+    <main id="main-content">
+      <section class="hero">
+        <h1>Practical animal care, in your language</h1>
+        <p>
+          Vaccination, feeding, and disease guidance for cattle, sheep, and
+          goats — built for farmers with limited data and no formal training
+          required.
         </p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#batch">See this batch</a>
-          <a class="btn btn-ghost" href="#inquire">Join the waitlist</a>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="batch" id="batch">
-      <div class="wrap">
-        <div class="batch-head">
-          <div>
-            <p class="eyebrow">The current batch</p>
-            <h2 class="batch-title">Three knives. One quench.</h2>
-          </div>
-          <div class="batch-meta">
-            <div><strong>Batch No. 014</strong></div>
-            <div>Quenched June 2026 · 40 sets</div>
-          </div>
+      <section class="core-features" aria-labelledby="core-features-heading">
+        <div class="core-features__inner">
+          <h2 id="core-features-heading">Core Features</h2>
+          <ul class="feature-cards">
+            <li>
+              <a class="feature-card" href="#cattle-farming">
+                <svg
+                  class="feature-card__icon"
+                  viewBox="0 0 64 64"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="32" cy="36" r="18" fill="currentColor" />
+                  <path
+                    d="M14 22 L22 30 M50 22 L42 30"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                  <circle cx="25" cy="34" r="3" fill="#F2F1EE" />
+                  <circle cx="39" cy="34" r="3" fill="#F2F1EE" />
+                </svg>
+                <span class="feature-card__title">Cattle Farming</span>
+                <p class="feature-card__desc">
+                  Vaccination schedules, feeding by life stage, common diseases,
+                  and farming tips for your herd.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="feature-card" href="#vaccination-schedules">
+                <svg
+                  class="feature-card__icon"
+                  viewBox="0 0 64 64"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect
+                    x="16"
+                    y="28"
+                    width="32"
+                    height="14"
+                    rx="2"
+                    transform="rotate(-45 32 35)"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M40 22 L46 16 M44 26 L50 20"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <span class="feature-card__title">Vaccination Schedules</span>
+                <p class="feature-card__desc">
+                  What to give, and when — age-by-age schedules for every
+                  animal, with a printable version.
+                </p>
+              </a>
+            </li>
+            <li>
+              <a class="feature-card" href="#sheep-goat-farming">
+                <svg
+                  class="feature-card__icon"
+                  viewBox="0 0 64 64"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="24" cy="30" r="10" fill="currentColor" />
+                  <circle cx="34" cy="26" r="8" fill="currentColor" />
+                  <circle cx="40" cy="34" r="7" fill="currentColor" />
+                  <circle cx="20" cy="24" r="2.5" fill="#F2F1EE" />
+                </svg>
+                <span class="feature-card__title">Sheep and Goat Farming</span>
+                <p class="feature-card__desc">
+                  Feeding, vaccination, and drought-prep guidance suited to
+                  smaller herds and flocks.
+                </p>
+              </a>
+            </li>
+          </ul>
         </div>
+      </section>
 
-        <div class="flex-row">
-          <article class="blade-card">
-            <div class="blade-glyph">
-              <svg viewBox="0 0 46 14">
-                <path d="M2 10 C 14 2, 28 2, 44 6" />
-              </svg>
-            </div>
-            <h3 class="blade-name">The Gaunt</h3>
-            <p class="blade-desc">
-              For thin work — shallots, herbs, the fine cuts that ask for
-              patience over force.
-            </p>
-            <div class="blade-specs">
-              <div class="row"><span>Blade</span><span>4.5 in</span></div>
-              <div class="row"><span>Steel</span><span>52100</span></div>
-              <div class="row"><span>Handle</span><span>Ebony</span></div>
-            </div>
-          </article>
+      <section id="cattle-farming">
+        <h2>Cattle Farming</h2>
+        <p>Full cattle guide content goes here.</p>
+      </section>
 
-          <article class="blade-card">
-            <div class="blade-glyph">
-              <svg viewBox="0 0 46 14">
-                <path d="M2 12 C 16 4, 30 4, 44 3" />
-              </svg>
-            </div>
-            <h3 class="blade-name">The Cleave</h3>
-            <p class="blade-desc">
-              Built for the board's hard labor — squash, bone-in cuts, and the
-              daily grind.
-            </p>
-            <div class="blade-specs">
-              <div class="row"><span>Blade</span><span>7 in</span></div>
-              <div class="row"><span>Steel</span><span>1084</span></div>
-              <div class="row"><span>Handle</span><span>Walnut</span></div>
-            </div>
-          </article>
+      <section id="vaccination-schedules">
+        <h2>Vaccination Schedules</h2>
+        <p>Full vaccination schedule content goes here.</p>
+      </section>
 
-          <article class="blade-card">
-            <div class="blade-glyph">
-              <svg viewBox="0 0 46 14">
-                <path d="M2 7 C 16 7, 30 7, 44 7" />
-              </svg>
-            </div>
-            <h3 class="blade-name">The Draw</h3>
-            <p class="blade-desc">
-              A long, low-drag edge for clean slices through roasts, loaves, and
-              cured meats.
-            </p>
-            <div class="blade-specs">
-              <div class="row"><span>Blade</span><span>9 in</span></div>
-              <div class="row"><span>Steel</span><span>W2</span></div>
-              <div class="row"><span>Handle</span><span>Horn</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+      <section id="sheep-goat-farming">
+        <h2>Sheep and Goat Farming</h2>
+        <p>Full sheep and goat guide content goes here.</p>
+      </section>
+    </main>
 
-    <section class="process" id="process">
-      <div class="wrap process-inner">
-        <div>
-          <p class="eyebrow">The forge</p>
-          <h3>Made slow,<br />on purpose.</h3>
-        </div>
-        <div>
-          <p>
-            Every blade in a batch is drawn from the same bar of steel, hammered
-            by the same two hands, and quenched within the same hour. That's
-            what "batch" means here — not a product line, but a single afternoon
-            at the forge.
-          </p>
-          <p>
-            When a batch sells out, the pattern goes back in the drawer. The
-            next one starts from a blank sheet — different steel, different
-            handle stock, different reason for existing.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer id="inquire">
-      <div class="wrap footer-row">
-        <div class="mark">
-          Ferro<span style="color: var(--brass)">&amp;</span>Ash
-        </div>
-        <div>Workshop hours by appointment · hello@ferroandash.example</div>
-      </div>
+    <footer class="site-footer">
+      <p>&copy; 2026 AgriGuide &middot; Built for farmers, with farmers.</p>
     </footer>
   </body>
 </html>
